@@ -1,10 +1,9 @@
 package ms.email.email.models;
 
 import lombok.Data;
+import ms.email.email.enuns.StatusEmail;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -14,13 +13,18 @@ import java.time.LocalDateTime;
 public class EmailModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long emailId;
+
     private String ownerRef;
     private String emailFrom;
     private String emailTo;
     private String subject;
+
     @Column(columnDefinition = "TEXT")
     private String text;
+
     private LocalDateTime sendDataEmail;
-    private statusEmail statusEmail;
+    private StatusEmail statusEmail;
 }
